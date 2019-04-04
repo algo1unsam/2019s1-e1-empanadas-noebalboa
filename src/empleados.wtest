@@ -10,3 +10,29 @@ test "sueldo de Baigorria y de Gimenez" {
 	gimenez.sueldo(12000)
 	assert.equals(12000, gimenez.sueldo())
 }
+
+test "Manejo de las finanzas de Gimenez" {
+	assert.equals(15000, gimenez.sueldo())
+	gimenez.gastar(4000)
+	assert.equals(4000, gimenez.totalDeuda())
+	assert.equals(0, gimenez.totalDinero())
+	gimenez.gastar(8000)
+	assert.equals(12000, gimenez.totalDeuda())
+	assert.equals(0, gimenez.totalDinero())
+	gimenez.cobrarSueldo()
+	assert.equals(0, gimenez.totalDeuda())
+	assert.equals(3000, gimenez.totalDinero())
+	gimenez.gastar(25000)
+	assert.equals(22000, gimenez.totalDeuda())
+	assert.equals(0, gimenez.totalDinero())
+	gimenez.cobrarSueldo()
+	assert.equals(7000, gimenez.totalDeuda())
+	assert.equals(0, gimenez.totalDinero())
+}
+
+test "Galvan le paga a Baigorria"{
+	assert.equals(1500, baigorria.sueldo())
+	galvan.pagarA(baigorria)
+	baigorria.cobrarSueldo()
+	assert.equals(3000, baigorria.totalCobrado())
+}
