@@ -34,5 +34,7 @@ test "Galvan le paga a Baigorria"{
 	assert.equals(1500, baigorria.sueldo())
 	galvan.pagarA(baigorria)
 	baigorria.cobrarSueldo()
-	assert.equals(3000, baigorria.totalCobrado())
+	baigorria.venderEmpanada()
+	baigorria.venderEmpanada()
+	assert.equals(30, baigorria.sueldo())
 }
